@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversores</title>
+    <style>
+        body{font-family: Arial, Helvetica, sans-serif; text-align: center;}
+        input, button{ margin: 10px; padding: 10px;}
+    </style>
+</head>
+<body>
+    <h1>Conversor de Binario</h1>
+    <input type="text" id="binaryInput" placeholder="Digite um número em binario">
+    <button id="convert">Convertsor</button><br/>
+    <label for="decimal">Para decimal</label>
+    <input type="checkbox" name="decimal" id="toDecimal" checked>
+    <label for="binary">Para binario</label>
+    <input type="checkbox" name="binary" id="toBinary">
+    <p>Resultado: <span id="result"></span></p>
+
+    <script>
+        
+        const btnIn = document.querySelector("#convert")
+        let checkDec = document.querySelector("#toDecimal")
+        let checkBin = document.querySelector("#toBinary")
+        
+
+        checkDec.addEventListener("change", function(){
+            if(this.checked){
+                checkBin.checked = false
+            }
+        })
+        checkBin.addEventListener("change", function(){
+            if(this.checked){
+                checkDec.checked = false
+            }
+        })
+
+
+        btnIn.addEventListener("click", function(){
+            const binaryStr = document.getElementById("binaryInput").value;
+            if(checkDec.checked){
+                convertToDecimal(binaryStr)
+            }else if(checkBin.checked){
+                convertToBinary(binaryStr)
+            }
+            
+        })
+
+
+        function convertToDecimal(txt){
+            
+            if(/^[01]+$/.test(txt)){
+                let decimal = parseInt(txt, 2);
+                document.getElementById("result").textContent = decimal;
+
+            }else{
+                document.getElementById("result").textContent = "Entrada inválida";
+            }
+        }
+
+        function convertToBinary(txt){
+            
+            let decimal = parseInt(txt)
+            if(!isNaN(decimal)){
+                let binary = decimal.toString(2);
+                document.getElementById("result").textContent = binary
+
+            }else{
+                document.getElementById("result").textContent = "Entrada inválida";
+            }
+        }
+    </script>
+</body>
+</html>
