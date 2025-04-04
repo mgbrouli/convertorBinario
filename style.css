@@ -1,0 +1,51 @@
+*{ margin: 0; padding: 0; box-sizing: border-box;}
+
+body{
+    font-family: Arial, Helvetica, sans-serif; 
+    display: flex;
+    height: 100vh;
+
+
+}
+nav{
+    width: 200px;
+    background-color: #222;
+    color: white;
+}
+nav h2{
+    margin-bottom: 20px;
+}
+nav button{
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #444;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+nav button:hover{
+    background-color: #666;
+}
+main{
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+header{
+    margin-bottom: 20px;
+}
+section{
+    flex: 1;
+}
+input, button{ margin: 10px 0; padding: 10px;}
+
+footer{
+    margin-top: auto;
+    padding-top: 20px;
+    font-size: 0.8rem;
+    color: gray;
+}
