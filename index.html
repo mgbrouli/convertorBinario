@@ -27,6 +27,7 @@
         <button id="binToDec">Binário -> Decimal</button>
         <button id="decToBin">Decimal -> Binário</button>
         <button id="textToBin">Texto -> Binário</button>
+        <button id="binToText">Binário -> Texto</button>
     </nav>
 
     <main>
@@ -46,77 +47,6 @@
     
     
     
-    <script>
-        
-        let mode = 'binToDec'
-
-        const elements = {
-            convertBtn: document.querySelector("#convert"),
-            binToDec : document.querySelector("#binToDec"),
-            decToBin : document.querySelector("#decToBin"),
-            textToBin : document.querySelector("#textToBin"),
-            title : document.querySelector("#title"),
-            input: document.querySelector("#binaryInput"),
-            result: document.querySelector("#result")
-        }
-
-        const modeTitles={
-            binToDec: "Binário para Decimal",
-            decToBin: "Decimal para Binário",
-            textToBin: "Texto para Binário"
-        }
-        
-
-        function setMode(selectMode){
-            mode = selectMode
-            elements.title.textContent = modeTitles[mode]
-
-            elemets.input.value = "";
-            elements.result.textContent = ""
-        }
-
-
-
-
-        function convertToDecimal(txt){
-            
-            if(/^[01]+$/.test(txt)){
-                let decimal = parseInt(txt, 2);
-                elements.result.textContent = decimal;
-
-            }else{
-                elements.result.textContent = "Entrada inválida";
-            }
-        }
-
-        function convertToBinary(txt){
-            
-            let decimal = parseInt(txt)
-            if(!isNaN(decimal)){
-                let binary = decimal.toString(2);
-                elements.result.textContent = binary
-
-            }else{
-                elements.result.textContent = "Entrada inválida";
-            }
-        }
-        
-        function textToBin(txt){
-            const bin = txt.split('').map(char => char.charCodeAt(0).toString(2).padStart(8, '0')).join(' ');
-            elements.result.textContent = bin
-        }
-
-        function handleConvert(){
-            const value = elements.input.value.trim();
-            if(mode === "binToDec") return convertToDecimal(value)
-            if(mode === "decToBin") return convertToBinary(value)
-            return textToBin(value)
-        }
-        
-        elements.convertBtn.addEventListener("click",handleConvert)
-        elements.binToDec.addEventListener("click", ()=> setMode("binToDec"));
-        elements.decToBin.addEventListener("click", ()=>setMode("decToBin"));
-        elements.textToBin.addEventListener("click", ()=> setMode("textToBin"))
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
