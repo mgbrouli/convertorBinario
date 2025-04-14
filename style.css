@@ -43,9 +43,79 @@ section{
 }
 input, button{ margin: 10px 0; padding: 10px;}
 
+.info{
+    color: white;
+    background-image: radial-gradient(rgb(87, 171, 199), rgb(49, 109, 179), rgb(5, 5, 100));
+    border-radius: 20px;
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgb(14, 14, 114);
+    font-size: 25px;
+    font-weight: bolder;
+    text-align: center;
+    align-items: center;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+.containerInformacao{
+    display: none;
+    width: 300px;
+    height: 250px;
+    background-color: rgb(250, 180, 51);
+    border: 2px solid red;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding: 10px;   
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: #222;
+    position: absolute;
+    right: 60px;
+    top: 20px;
+}
+.info:hover + .containerInformacao{
+    display: block;
+}
+@property --angle{
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.containerInformacao::after, .containerInformacao::before{
+    
+    content: '';
+    width: 100%;
+    height: 100%;
+    padding: 4px;
+    background-image: conic-gradient(from var(--angle),yellow, orange,red,purple, blue,lightblue, rgb(6, 201, 6), rgb(136, 204, 58));
+    z-index: -10;
+    animation: 5s neon_info linear infinite;   
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    
+}
+
+.containerInformacao::before{
+    filter: blur(1.5rem);
+    opacity: 0.5;
+}
+
+
+
 footer{
     margin-top: auto;
     padding-top: 20px;
     font-size: 0.8rem;
     color: gray;
+}
+
+
+
+@keyframes neon_info{
+    from{--angle: 0deg;}
+    to{--angle: 360deg;}
 }

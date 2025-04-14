@@ -8,7 +8,8 @@ const elements = {
     binToText : document.querySelector("#binToText"),
     title : document.querySelector("#title"),
     input: document.querySelector("#binaryInput"),
-    result: document.querySelector("#result")
+    result: document.querySelector("#result"),
+    information: document.querySelector("#ctn_info")
 }
 
 const modeTitles={
@@ -17,13 +18,19 @@ const modeTitles={
     textToBin: "Texto para Binário",
     binToText: "Binário para Texto"
 }
+const informacoes ={
+    binToDec: "Transforma binário em decimais, binários popularmente conhecida como linguagem de computador ou linguagem binaria em que só emvolvem 2 elementos 0 e 1",
+    decToBin: "Transforma decimal em binário, decimal seria nossa lingagem padronizada onte temos 10 digitos contando do 1 ao 0 ex: 1,2,3,4,5,6,7,8,9,0 OBS:(Somente números)",
+    textToBin: "Transforma texto em binário, sabendo que binario é uma linguagem de máquinha contendo somente 0 e 1, transforme texto simples como conhecemos em binário",
+    binToText:"Transforma binários em texto, aqui faremos a tradução de binario para caracteres de texto como lemos. Este modulo também pode traduzir os numero acima"
 
+}
 
 function setMode(selectMode){
     mode = selectMode
     elements.title.textContent = modeTitles[mode]
-
-    elemets.input.value = "";
+    elements.information.textContent = informacoes[mode]
+    elements.input.value = "";
     elements.result.textContent = ""
 }
 
@@ -61,6 +68,7 @@ function binToText(txt){
 function textToBin(txt){
     const bin = txt.split('').map(char => char.charCodeAt(0).toString(2).padStart(8, '0')).join(' ');
     elements.result.textContent = bin
+    
 }
 
 function handleConvert(){
